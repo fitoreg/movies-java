@@ -22,6 +22,8 @@ public class Movie {
     private String country;
     private String trailerURL;
 
+    public Movie() {}
+
     public Movie(Long id, String title, String duration, String genre, String releaseYear, String director, String rating, String country, String trailerURL) {
         this.id = id;
         this.title = title;
