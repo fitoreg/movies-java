@@ -1,13 +1,14 @@
 package com.gashi.fitore.Movies.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
-public class Movie {
-
-    // Properties
+@Table(name = "movies")
+@EntityListeners(AuditingEntityListener.class)
+public class Movie implements Serializable {
 
     @Id
     @GeneratedValue
@@ -21,10 +22,11 @@ public class Movie {
     private String rating;
     private String country;
     private String trailerURL;
+    private String posterThumbnailURL;
 
     public Movie() {}
 
-    public Movie(Long id, String title, String duration, String genre, String releaseYear, String director, String rating, String country, String trailerURL) {
+    public Movie(Long id, String title, String duration, String genre, String releaseYear, String director, String rating, String country, String trailerURL, String posterThumbnailURL) {
         this.id = id;
         this.title = title;
         this.duration = duration;
@@ -34,6 +36,7 @@ public class Movie {
         this.rating = rating;
         this.country = country;
         this.trailerURL = trailerURL;
+        this.posterThumbnailURL = posterThumbnailURL;
     }
 
     public Long getId() {
@@ -106,5 +109,13 @@ public class Movie {
 
     public void setTrailerURL(String trailerURL) {
         this.trailerURL = trailerURL;
+    }
+
+    public String getPosterThumbnailURL() {
+        return posterThumbnailURL;
+    }
+
+    public void setPosterThumbnailURL(String posterThumbnailURL) {
+        this.posterThumbnailURL = posterThumbnailURL;
     }
 }
